@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface de Chat Simulado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            height: 90vh;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Área de visualização das mensagens */
+        .message-area {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #e5ddd5; /* Cor de fundo de chat */
+        }
+
+        /* Estilo da caixa de mensagem enviada (simulando você) */
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        .sent {
+            justify-content: flex-end; /* Alinha suas mensagens à direita */
+        }
+
+        .received {
+            justify-content: flex-start; /* Alinha mensagens recebidas à esquerda */
+        }
+
+        .message-box {
+            max-width: 70%;
+            padding: 10px 12px;
+            border-radius: 18px;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .sent .message-box {
+            background-color: #dcf8c6; /* Cor de balão de mensagem enviada */
+            color: #1f272a;
+        }
+
+        .received .message-box {
+            background-color: #ffffff; /* Cor de balão de mensagem recebida */
+            color: #1f272a;
+        }
+
+        /* Estilo do ícone de status (Enviada/Vista) */
+        .message-status {
+            font-size: 0.8em;
+            color: #8796a1;
+            margin-left: 5px;
+            /* Garante que o ícone fique após o texto */
+            display: inline-block; 
+            vertical-align: bottom;
+        }
+
+        /* Área de input e botão */
+        .input-area {
+            padding: 10px 15px;
+            border-top: 1px solid #ccc;
+            background-color: #f7f7f7;
+            display: flex;
+        }
+
+        .input-area input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+
+        .input-area button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input-area button:hover {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="message-area">
+            
+            <div class="message received">
+                <div class="message-box">
+                    Olá! Tudo bem? Este é um chat de exemplo.
+                </div>
+            </div>
+
+            <div class="message sent">
+                <div class="message-box">
+                    Sim, tudo ótimo! A mensagem foi enviada.
+                    <span class="message-status">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="message sent">
+                <div class="message-box">
+                    E esta foi vista!
+                    <span class="message-status" style="color: #007bff;">
+                        <i class="fas fa-check-double"></i>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <form class="input-area" action="/enviar-mensagem" method="POST">
+            <input type="text" name="mensagem" placeholder="Digite sua mensagem..." required>
+            <button type="submit" title="Enviar Mensagem">
+                 <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
